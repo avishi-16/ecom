@@ -1,4 +1,4 @@
-#ShopNShine Ecommerce website
+# ShopNShine Ecommerce website
 
   Created Landing page with About Us and Trending Products sections
   User registration and login component - Fully responsive design for all devices
