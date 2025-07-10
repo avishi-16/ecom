@@ -36,7 +36,7 @@ const RegForm = () => {
             <div className='r-wrapper'>
                 <div style={{
                     width: '100%',
-                    maxWidth: '680px'
+                    maxWidth: '635px'
                 }}>
                     <Lottie animationData={Animation2} loop={true} />
                 </div>

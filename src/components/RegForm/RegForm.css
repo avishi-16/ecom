@@ -7,18 +7,17 @@
 .r-head {
     display: flex;
     align-items: center;
-    padding: 1rem;
 }
 
 .logo {
-      width: 100px;
-    height: 70px;
+      width: 95px;
+    height: 65px;
     object-fit: contain;
     display: block;
 }
 
 .r-head h1 {
-        font-size: 1.8rem; 
+        font-size: 1.6rem; 
     font-weight: 700; 
     color: #B33791;
     padding-top: 1.5rem;
@@ -57,7 +56,7 @@ background: linear-gradient(188deg, rgba(204, 55, 132, 0.85) 15%, rgba(230, 171,
 .reg-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.89rem;
     padding: 2.7rem;
 }
 

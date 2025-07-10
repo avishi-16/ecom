@@ -1,0 +1,14 @@
+.d-container{
+    min-height: 100vh;
+    width: 100%;
+    background-color: #E5E0D8;
+    display: flex;
+    flex-direction: row;
+}
+
+.d-main {
+  flex: 1;
+  padding: 20px;
+  background-color: #fff;
+  display: block; 
+}
