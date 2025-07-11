@@ -1,10 +1,10 @@
 import './LandingPg.css';
 import logo from "../../assets/ecom-logo.png";
 import heroBg from "../../assets/ecom-bg.jpg";
-import products from "../../assets/Products/products";
 import Animation1 from "../../animations/about.json"
 import Lottie from 'lottie-react'
 import { useNavigate } from 'react-router-dom';
+import { products2 } from '../../assets/Products/products';
 
 const LandingPg = () => {
 
@@ -62,7 +62,7 @@ const LandingPg = () => {
             <section id="trending" className="trending">
                 <h2>Trending Products</h2>
                 <div className='trending-prod'>
-                    {products.map((p) => (
+                    {products2.map((p) => (
                         <div className="prod-card" key={p.id}>
                             <img src={p.image} alt={p.name} />
                             <h3>{p.name}</h3>
