@@ -33,14 +33,10 @@ const Navbar = ({onSearch}) => {
                     <BsCart4 className="nav-icon" />
                     <span className="nav-label">Cart</span>
                 </Link>
-                <Link to="/account" className="nav-link-vertical">
+                <Link to="/profile" className="nav-link-vertical">
                     <CgProfile className="nav-icon" />
                     <span className="nav-label">Profile</span>
                 </Link>
-                <a className="nav-link-vertical" style={{ cursor: 'pointer' }}>
-                    <MdLogout className="nav-icon" />
-                    <span className="nav-label">Logout</span>
-                </a>
             </div>
 
             <button className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>

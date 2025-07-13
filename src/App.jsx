@@ -4,7 +4,7 @@ import RegForm from './components/RegForm/RegForm';
 import Dashboard from './pages/Dashboard/Dashboard';
 import Cart from './components/Cart/Cart';
 import Checkout from './components/Checkout/Checkout';
-import Payment from './pages/Payment/Payment';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   return( <>
@@ -14,7 +14,7 @@ function App() {
        <Route path="/dashboard" element={<Dashboard />} />
        <Route path="/cart" element={<Cart />} />
        <Route path="/checkout" element={<Checkout />} />
-       <Route path="/payment" element={<Payment />} />
+       <Route path="/profile" element={<Profile />} />
     </Routes>
     </>
   )
