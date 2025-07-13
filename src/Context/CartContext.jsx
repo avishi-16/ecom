@@ -1,17 +1,38 @@
 import { createContext, useContext, useEffect, useState } from 'react';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase';
 
 const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
-  const [cartItems, setCartItems] = useState(() => {
-    
-    const savedCart = localStorage.getItem('cart');
-    return savedCart ? JSON.parse(savedCart) : [];
-  });
+  const [cartItems, setCartItems] = useState([]);
+  const [uid, setUid] = useState(null);
+
+ 
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUid(user.uid);
+      } else {
+        setUid(null);
+        setCartItems([]);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(cartItems));
-  }, [cartItems]);
+    if (uid) {
+      const savedCart = localStorage.getItem(`cart_${uid}`);
+      setCartItems(savedCart ? JSON.parse(savedCart) : []);
+    }
+  }, [uid]);
+
+  useEffect(() => {
+    if (uid) {
+      localStorage.setItem(`cart_${uid}`, JSON.stringify(cartItems));
+    }
+  }, [cartItems, uid]);
 
   const addToCart = (item) => {
     setCartItems((prevItems) => {
@@ -41,11 +62,19 @@ export const CartProvider = ({ children }) => {
     );
   };
 
+  const clearCart = () => {
+    setCartItems([]);
+    if (uid) {
+      localStorage.removeItem(`cart_${uid}`);
+    }
+  };
+
   return (
-    <CartContext.Provider value={{ cartItems, addToCart, increaseQty, decreaseQty }}>
+    <CartContext.Provider value={{ cartItems, addToCart, increaseQty, decreaseQty, clearCart }}>
       {children}
     </CartContext.Provider>
   );
 };
 
 export const useCart = () => useContext(CartContext);
+

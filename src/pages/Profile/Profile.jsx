@@ -1,13 +1,17 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { auth, db } from '../../firebase';
 import { doc, getDoc, collection, query, where, getDocs } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
+import Lottie from 'lottie-react';
+import Loading from '../../animations/loading.json'
 import './Profile.css';
 
 const Profile = () => {
   const [userData, setUserData] = useState(null);
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -41,7 +45,13 @@ const Profile = () => {
     return () => unsubscribe();
   }, []);
 
-  if (loading) return <p>Loading profile...</p>;
+  if (loading) {
+  return (
+      <div style={{ width: 400}}>
+        <Lottie animationData={Loading} loop={true} />
+    </div>
+  );
+}
   if (!userData) return <p>No user data found.</p>;
 
   return (
@@ -71,6 +81,7 @@ const Profile = () => {
           ))}
         </ul>
       )}
+      <button className='logout' onClick={() => navigate('/logout')}>Logout</button>
     </div>
   );
 };

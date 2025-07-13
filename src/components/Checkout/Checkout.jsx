@@ -6,7 +6,7 @@ import { auth, db } from '../../firebase';
 import './Checkout.css';
 
 const Checkout = () => {
-  const { cartItems } = useCart();
+  const { cartItems, clearCart } = useCart();
   const [address, setAddress] = useState({
     name: '',
     phone: '',
@@ -52,10 +52,11 @@ const Checkout = () => {
                 address,
                 createdAt: serverTimestamp()
               });
+                 clearCart();
               unsubscribe();
               navigate('/profile');
             } catch (error) {
-              console.error('❌ Error saving order:', error);
+              console.error('Error saving order:', error);
             }
           }
         });
