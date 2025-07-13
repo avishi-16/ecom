@@ -5,11 +5,12 @@ import { FaBars, FaTimes } from 'react-icons/fa';
 import { AiOutlineProduct } from 'react-icons/ai';
 import { BsCart4 } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
-import { IoIosLogOut } from 'react-icons/io';
 import { TiHomeOutline } from "react-icons/ti";
+import { MdLogout } from "react-icons/md";
+import { Link } from 'react-router-dom';
 import Search from '../Search/Search';
 
-const Navbar = () => {
+const Navbar = ({onSearch}) => {
     const [menuOpen, setMenuOpen] = useState(false);
 
     return (
@@ -18,26 +19,26 @@ const Navbar = () => {
                 <img src={logo} alt="logo" className="navbar-logo" />
                 <h2 className="navbar-title">ShopNShine</h2>
             </div>
-            <Search/>
+            <Search onSearch={onSearch}/>
             <div className={`navbar-links ${menuOpen ? 'show' : ''}`}>
-                <a href="/" className="nav-link-vertical">
+                <Link to="/" className="nav-link-vertical">
                     <TiHomeOutline className="nav-icon" />
                     <span className="nav-label">Home</span>
-                </a>
-                <a href="/products" className="nav-link-vertical">
+                </Link>
+                <Link to="/dashboard" className="nav-link-vertical">
                     <AiOutlineProduct className="nav-icon" />
                     <span className="nav-label">Products</span>
-                </a>
-                <a href="/cart" className="nav-link-vertical">
+                </Link>
+                <Link to="/cart" className="nav-link-vertical">
                     <BsCart4 className="nav-icon" />
                     <span className="nav-label">Cart</span>
-                </a>
-                <a href="/account" className="nav-link-vertical">
+                </Link>
+                <Link to="/account" className="nav-link-vertical">
                     <CgProfile className="nav-icon" />
                     <span className="nav-label">Profile</span>
-                </a>
+                </Link>
                 <a className="nav-link-vertical" style={{ cursor: 'pointer' }}>
-                    <IoIosLogOut className="nav-icon" />
+                    <MdLogout className="nav-icon" />
                     <span className="nav-label">Logout</span>
                 </a>
             </div>
